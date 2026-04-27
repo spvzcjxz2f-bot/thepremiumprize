@@ -68,7 +68,7 @@ export const getCurrentParams = (): string => {
  */
 export const getUrlParams = (): URLSearchParams => {
   if (typeof window === "undefined") return new URLSearchParams();
-  return new URLSearchParams(window.location.search);
+  return new URLSearchParams(getCurrentParams());
 };
 
 /**
@@ -122,7 +122,7 @@ export const navigateWithParams = (path: string): void => {
  */
 export const openWithParams = (path: string): void => {
   if (typeof window === "undefined") return;
-  window.open(buildUrlWithParams(path), "_blank", "noopener,noreferrer");
+  window.location.href = buildUrlWithParams(path);
 };
 
 /**

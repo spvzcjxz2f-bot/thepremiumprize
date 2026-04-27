@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#000000" />
+    <!-- TODO: Set the document title to the name of your application -->
+    <title>Lovable App</title>
+    <meta name="description" content="App for users to earn money by evaluating products and engaging with gamified features.">
+    <meta name="author" content="Lovable" />
+
+    <!-- UTM persistence: capture & restore URL params BEFORE any tracking script runs -->
+    <script>
+      (function () {
+        try {
+          var KEY = "__url_params__";
+          var search = window.location.search || "";
+          if (search && search !== "?") {
+            sessionStorage.setItem(KEY, search);
+          } else {
+            var stored = sessionStorage.getItem(KEY);
+            if (stored && stored !== "?") {
+              var newUrl = window.location.pathname + stored + window.location.hash;
+              window.history.replaceState(window.history.state, "", newUrl);
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- TikTok Pixel UTMify -->
+    <script>
+      window.tikTokPixelId = "699375b3ba5b4328a8683be2";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js");
+      document.head.appendChild(a);
+    </script>
+
+    <!-- UTMify Tracking -->
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
+
+    <!-- TODO: Update og:title to match your application name -->
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9dd1f862-37cf-435a-96e2-52c10764cc2c/id-preview-16370e4b--ccab6b16-5735-466e-bd3a-e0536d8bfacf.lovable.app-1776895359604.png">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9dd1f862-37cf-435a-96e2-52c10764cc2c/id-preview-16370e4b--ccab6b16-5735-466e-bd3a-e0536d8bfacf.lovable.app-1776895359604.png">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  
+  
+  
+  <meta property="og:title" content="Lovable App">
+  <meta name="twitter:title" content="Lovable App">
+  <meta property="og:description" content="App for users to earn money by evaluating products and engaging with gamified features.">
+  <meta name="twitter:description" content="App for users to earn money by evaluating products and engaging with gamified features.">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

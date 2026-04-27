@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 341 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 341 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* TikTok Brand Colors */
+    --tiktok-pink: 341 100% 50%;
+    --tiktok-cyan: 180 100% 50%;
+    --tiktok-dark: 0 0% 0%;
+    --tiktok-card: 0 0% 10%;
+    --tiktok-elevated: 0 0% 15%;
+    
+    /* Glow Effects */
+    --glow-primary: 0 0 30px hsl(341 100% 50% / 0.5);
+    --glow-primary-intense: 0 0 50px hsl(341 100% 50% / 0.7);
+    --glow-cyan: 0 0 30px hsl(180 100% 50% / 0.5);
+    
+    /* Reward Colors */
+    --reward-gold: 45 100% 50%;
+    --reward-glow: 0 0 20px hsl(45 100% 50% / 0.6);
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .btn-tiktok {
+    @apply text-primary-foreground font-bold py-4 px-8 rounded-full 
+           transition-all duration-300 transform hover:scale-105 
+           hover:brightness-110 active:scale-95 shadow-lg;
+    background: linear-gradient(135deg, hsl(var(--tiktok-pink)) 0%, hsl(var(--tiktok-cyan)) 100%);
+    box-shadow: var(--glow-primary);
+  }
+
+  .btn-tiktok:hover {
+    box-shadow: var(--glow-primary-intense);
+  }
+
+  .card-tiktok {
+    @apply bg-card rounded-2xl border border-border/50 backdrop-blur-sm;
+    background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(0 0% 5%) 100%);
+  }
+
+  .card-tiktok-elevated {
+    @apply bg-secondary rounded-2xl border;
+    border-image: linear-gradient(135deg, hsl(var(--tiktok-pink)), hsl(var(--tiktok-cyan))) 1;
+    box-shadow: 0 0 20px hsl(var(--tiktok-pink) / 0.15), 0 0 20px hsl(var(--tiktok-cyan) / 0.15);
+  }
+
+  .balance-badge {
+    @apply bg-card border rounded-full px-4 py-2 
+           flex items-center gap-2 font-bold;
+    border-color: hsl(var(--tiktok-pink) / 0.5);
+    color: hsl(var(--tiktok-pink));
+    box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3);
+  }
+
+  .reaction-btn {
+    @apply w-20 h-20 rounded-2xl flex items-center justify-center text-4xl
+           transition-all duration-200 transform hover:scale-110 active:scale-95
+           bg-secondary border-2 border-border;
+  }
+
+  .reaction-btn:hover {
+    border-color: hsl(var(--tiktok-pink) / 0.5);
+    box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.3);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--tiktok-pink) / 0.5), 0 0 40px hsl(var(--tiktok-cyan) / 0.3);
+  }
+
+  .gradient-tiktok {
+    background: linear-gradient(135deg, hsl(var(--tiktok-pink)) 0%, hsl(var(--tiktok-cyan)) 100%);
+  }
+
+  .text-gradient-tiktok {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--tiktok-pink)) 0%, hsl(var(--tiktok-cyan)) 100%);
+  }
+
+  .progress-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  .wheel-segment {
+    @apply transition-transform duration-300;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .shake-animation {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .confetti-particle {
+    position: absolute;
+    animation: confetti 1s ease-out forwards;
+  }
+
+  .tiktok-note {
+    position: absolute;
+    animation: tiktokNote 2s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .gradient-dark {
+    background: linear-gradient(180deg, hsl(0 0% 8%) 0%, hsl(0 0% 0%) 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 8%) 100%);
+  }
+
+  .border-glow {
+    @apply border-2;
+    border-image: linear-gradient(135deg, hsl(var(--tiktok-pink)), hsl(var(--tiktok-cyan))) 1;
+    box-shadow: 0 0 15px hsl(var(--tiktok-pink) / 0.4), inset 0 0 15px hsl(var(--tiktok-cyan) / 0.1);
+  }
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--tiktok-pink) / 0.4), 0 0 20px hsl(var(--tiktok-cyan) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--tiktok-pink) / 0.7), 0 0 40px hsl(var(--tiktok-cyan) / 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes spin-wheel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(var(--spin-degrees, 1800deg));
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes tiktokNote {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes count-up {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes money-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+.animate-money-pop {
+  animation: money-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-count-up {
+  animation: count-up 0.3s ease-out;
+}
+
+/* Wheel spinning */
+.wheel-spinning {
+  animation: spin-wheel 4s cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+}
+
+/* Video wave animation */
+@keyframes wave {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+
+.audio-bar {
+  @apply w-1 rounded-full;
+  background: linear-gradient(to top, hsl(var(--tiktok-cyan)), hsl(var(--tiktok-pink)));
+  animation: wave 0.8s ease-in-out infinite;
+}
+
+.audio-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.audio-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.audio-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.audio-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* TikTok Logo Animation */
+@keyframes tiktokGlitch {
+  0%, 100% {
+    text-shadow: 2px 0 hsl(var(--tiktok-cyan)), -2px 0 hsl(var(--tiktok-pink));
+  }
+  50% {
+    text-shadow: -2px 0 hsl(var(--tiktok-cyan)), 2px 0 hsl(var(--tiktok-pink));
+  }
+}
+
+.tiktok-glitch {
+  animation: tiktokGlitch 0.3s ease-in-out infinite;
+}

@@ -6,15 +6,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { persistUrlParams } from "./lib/navigation";
+import { persistUrlParams, restoreUrlParams } from "./lib/navigation";
 
 const queryClient = new QueryClient();
 
-// Persist UTMs immediately on script load (before React mounts)
+// Restore/persist UTMs immediately on script load (before React mounts)
+restoreUrlParams();
 persistUrlParams();
 
 const App = () => {
   useEffect(() => {
+    restoreUrlParams();
     persistUrlParams();
   }, []);
 

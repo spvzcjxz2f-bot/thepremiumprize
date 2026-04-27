@@ -38,7 +38,7 @@ const FinalPage = ({ totalEarned }: FinalPageProps) => {
   // Load Vturb player script
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/edb83c2d-fdbb-4547-8abd-203223d1fc8d/players/69e94a9f11f04563d8943087/v4/player.js";
+    script.src = "https://scripts.converteai.net/edb83c2d-fdbb-4547-8abd-203223d1fc8d/players/69eed13b8151708c5bccfa39/v4/player.js";
     script.async = true;
     document.head.appendChild(script);
     
@@ -106,7 +106,7 @@ const FinalPage = ({ totalEarned }: FinalPageProps) => {
         <div 
           dangerouslySetInnerHTML={{
             __html: `
-              <vturb-smartplayer id="vid-69e94a9f11f04563d8943087" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+              <vturb-smartplayer id="vid-69eed13b8151708c5bccfa39" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
             `
           }}
         />

@@ -38,7 +38,7 @@ const FinalPage = ({ totalEarned }: FinalPageProps) => {
   // Load Vturb player script
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/edb83c2d-fdbb-4547-8abd-203223d1fc8d/players/69f510b3429b5d0eef508546/v4/player.js";
+    script.src = "/vendor/player-69f510b3429b5d0eef508546.js";
     script.async = true;
     document.head.appendChild(script);
     

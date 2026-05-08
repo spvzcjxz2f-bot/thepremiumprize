@@ -105,7 +105,7 @@
             language: null,
             minihooks: { active: !1, items: [] },
             oid: "edb83c2d-fdbb-4547-8abd-203223d1fc8d",
-            pitchTime: 15,
+            pitchTime: 5,
             pixels: { active: !1, items: [] },
             playback: { active: !1, actionAfterFinish: null, disablePause: !1, scrollToActionIn: null, smartPause: !1 },
             playerInit: {

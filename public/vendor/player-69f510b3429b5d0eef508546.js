@@ -51,7 +51,7 @@
                   id: "69e04f31448d8d0c1138dd5e_d4c9773f",
                   persist_on_video_end: !0,
                   show_to_returning_viewer: !1,
-                  range: { start: 1058, finish: 1249 },
+                  range: { start: 5, finish: 9999 },
                   type: "outside_video",
                   delay: !1,
                   delay_options: { query: "", query_type: "class" },
@@ -105,7 +105,7 @@
             language: null,
             minihooks: { active: !1, items: [] },
             oid: "edb83c2d-fdbb-4547-8abd-203223d1fc8d",
-            pitchTime: 15,
+            pitchTime: 5,
             pixels: { active: !1, items: [] },
             playback: { active: !1, actionAfterFinish: null, disablePause: !1, scrollToActionIn: null, smartPause: !1 },
             playerInit: {

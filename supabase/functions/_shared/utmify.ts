@@ -93,14 +93,21 @@ export async function notifyPurchase(session: any, lineItems: any[]) {
     utm_content: meta.utm_content,
     utm_term: meta.utm_term,
   };
-  const products: UtmifyProduct[] = lineItems.map((item: any) => ({
-    id: item.price?.id || item.id,
-    name: item.description || "",
-    planId: null,
-    planName: null,
-    quantity: item.quantity || 1,
-    priceInCents: item.amount_total || 0,
-  }));
+  const products: UtmifyProduct[] = lineItems.map((item: any) => {
+    const qty = item.quantity || 1;
+    const unit = item.price?.unit_amount ?? 0;
+    const priceInCents = unit > 0 ? unit * qty : (item.amount_total || 0);
+    return {
+      id: item.price?.id || item.id,
+      name: item.description || "",
+      planId: null,
+      planName: null,
+      quantity: qty,
+      priceInCents,
+    };
+  });
+  const totalCents = session.amount_total
+    ?? products.reduce((s, p) => s + p.priceInCents, 0);
   try {
     const payload = buildPayload(
       session.id,

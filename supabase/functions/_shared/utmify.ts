@@ -101,21 +101,23 @@ export async function notifyPurchase(session: any, lineItems: any[]) {
     priceInCents: item.amount_total || 0,
   }));
   try {
-    await fetch(URL_, {
+    const payload = buildPayload(
+      session.id,
+      "paid",
+      products,
+      utmParams,
+      session.customer_details,
+      session.amount_total || 0,
+      new Date(session.created * 1000).toISOString(),
+    );
+    console.log("UTMify Purchase payload:", JSON.stringify(payload));
+    const res = await fetch(URL_, {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-api-token": KEY },
-      body: JSON.stringify(
-        buildPayload(
-          session.id,
-          "paid",
-          products,
-          utmParams,
-          session.customer_details,
-          session.amount_total || 0,
-          new Date(session.created * 1000).toISOString(),
-        ),
-      ),
+      body: JSON.stringify(payload),
     });
+    const text = await res.text();
+    console.log("UTMify Purchase response:", res.status, text);
   } catch (e) {
     console.error("UTMify Purchase error:", (e as Error).message);
   }

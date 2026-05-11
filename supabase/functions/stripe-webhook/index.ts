@@ -28,10 +28,14 @@ Deno.serve(async (req) => {
   }
 
   try {
+    console.log("Webhook event received:", event.type, "id:", event.id);
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
+      console.log("Session id:", session.id, "amount_total:", session.amount_total, "currency:", session.currency);
       const { data: lineItems } = await stripe.checkout.sessions.listLineItems(session.id, { limit: 10 });
+      console.log("Line items count:", lineItems.length);
       await notifyPurchase(session, lineItems);
+      console.log("notifyPurchase completed for session:", session.id);
     }
     return new Response(JSON.stringify({ received: true }), {
       status: 200,

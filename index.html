@@ -31,14 +31,28 @@
       })();
     </script>
 
-    <!-- TikTok Pixel UTMify -->
+    <!-- TikTok Pixels UTMify (multi-pixel) -->
     <script>
-      window.tikTokPixelId = "69f9254cb2bef003e0564ac4";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js");
-      document.head.appendChild(a);
+      (function () {
+        var pixels = [
+          "69f9254cb2bef003e0564ac4", // Pixel 1 (original)
+          "6a02562180f278b60f7d04e0"  // Pixel 2 (novo teste - 3 países)
+        ];
+        function loadPixel(id) {
+          window.tikTokPixelId = id;
+          var s = document.createElement("script");
+          s.async = true;
+          s.defer = true;
+          // cache-buster garante que o script reexecute e leia o novo tikTokPixelId
+          s.src = "https://cdn.utmify.com.br/scripts/pixel/pixel-tiktok.js?pid=" + encodeURIComponent(id);
+          document.head.appendChild(s);
+          return s;
+        }
+        // Carrega o primeiro imediatamente; carrega o segundo após o primeiro inicializar
+        var first = loadPixel(pixels[0]);
+        first.onload = function () { loadPixel(pixels[1]); };
+        first.onerror = function () { loadPixel(pixels[1]); };
+      })();
     </script>
 
     <!-- UTMify Tracking -->

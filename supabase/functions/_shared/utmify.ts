@@ -115,7 +115,7 @@ export async function notifyPurchase(session: any, lineItems: any[]) {
       products,
       utmParams,
       session.customer_details,
-      session.amount_total || 0,
+      totalCents,
       new Date(session.created * 1000).toISOString(),
     );
     console.log("UTMify Purchase payload:", JSON.stringify(payload));

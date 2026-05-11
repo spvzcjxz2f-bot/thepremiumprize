@@ -38,11 +38,12 @@ function buildPayload(
     approvedDate: status === "paid" ? new Date().toISOString() : null,
     refundedAt: null,
     customer: {
-      name: customer?.name || null,
-      email: customer?.email || null,
+      name: customer?.name || "Unknown",
+      email: customer?.email || "unknown@unknown.com",
       phone: customer?.phone || null,
+      document: customer?.document || null,
       country: customer?.address?.country || null,
-      ip: null,
+      ip: customer?.ip || "0.0.0.0",
     },
     products,
     trackingParameters: {

@@ -62,7 +62,7 @@ Deno.serve(async (req) => {
     });
     const totalCents = products.reduce((s: number, k: string) => s + PRODUCTS[k].amount, 0);
     // Fire and forget
-    notifyIC(session.id, icProducts, utmParams, totalCents);
+    notifyIC(session.id, icProducts, utmParams, totalCents, "usd");
 
     return new Response(JSON.stringify({ url: session.url }), {
       status: 200,
